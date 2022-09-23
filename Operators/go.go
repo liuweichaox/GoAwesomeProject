@@ -51,4 +51,24 @@ func main() {
 	if e >= d {
 		fmt.Printf("第五行 - e 大于等于 d\n")
 	}
+
+	var f bool = true
+	var g bool = false
+	if f && g {
+		fmt.Printf("第一行 - 条件为 true\n")
+	}
+	if f || g {
+		fmt.Printf("第二行 - 条件为 true\n")
+	}
+	/* 修改 f 和 g 的值 */
+	f = false
+	g = true
+	if f && g {
+		fmt.Printf("第三行 - 条件为 true\n")
+	} else {
+		fmt.Printf("第三行 - 条件为 false\n")
+	}
+	if !(f && g) {
+		fmt.Printf("第四行 - 条件为 true\n")
+	}
 }
