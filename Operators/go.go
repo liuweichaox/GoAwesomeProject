@@ -90,4 +90,54 @@ func main() {
 
 	j = h >> i /* 15 = 0000 1111 */
 	fmt.Printf("第五行 - j 的值为 %d\n", j)
+
+	var k int = 21
+	var l int
+
+	l = k
+	fmt.Printf("第 1 行 - =  运算符实例，l 值为 = %d\n", l)
+
+	l += k
+	fmt.Printf("第 2 行 - += 运算符实例，l 值为 = %d\n", l)
+
+	l -= k
+	fmt.Printf("第 3 行 - -= 运算符实例，l 值为 = %d\n", l)
+
+	l *= k
+	fmt.Printf("第 4 行 - *= 运算符实例，l 值为 = %d\n", l)
+
+	l /= k
+	fmt.Printf("第 5 行 - /= 运算符实例，l 值为 = %d\n", l)
+
+	l = 200
+
+	l <<= 2
+	fmt.Printf("第 6行  - <<= 运算符实例，l 值为 = %d\n", l)
+
+	l >>= 2
+	fmt.Printf("第 7 行 - >>= 运算符实例，l 值为 = %d\n", l)
+
+	l &= 2
+	fmt.Printf("第 8 行 - &= 运算符实例，l 值为 = %d\n", l)
+
+	l ^= 2
+	fmt.Printf("第 9 行 - ^= 运算符实例，l 值为 = %d\n", l)
+
+	l |= 2
+	fmt.Printf("第 10 行 - |= 运算符实例，l 值为 = %d\n", l)
+
+	var m int = 4
+	var n int32
+	var o float32
+	var ptr *int
+
+	/* 运算符实例 */
+	fmt.Printf("第 1 行 - m 变量类型为 = %T\n", m)
+	fmt.Printf("第 2 行 - n 变量类型为 = %T\n", n)
+	fmt.Printf("第 3 行 - o 变量类型为 = %T\n", o)
+
+	/*  & 和 * 运算符实例 */
+	ptr = &m /* 'ptr' 包含了 'm' 变量的地址 */
+	fmt.Printf("m 的值为  %d\n", m)
+	fmt.Printf("*ptr 为 %d\n", *ptr)
 }
