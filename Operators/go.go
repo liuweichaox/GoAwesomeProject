@@ -71,4 +71,23 @@ func main() {
 	if !(f && g) {
 		fmt.Printf("第四行 - 条件为 true\n")
 	}
+
+	var h uint = 60 /* 60 = 0011 1100 */
+	var i uint = 13 /* 13 = 0000 1101 */
+	var j uint = 0
+
+	j = h & i /* 12 = 0000 1100 */
+	fmt.Printf("第一行 - j 的值为 %d\n", j)
+
+	j = h | i /* 61 = 0011 1101 */
+	fmt.Printf("第二行 - j 的值为 %d\n", j)
+
+	j = h ^ i /* 49 = 0011 0001 */
+	fmt.Printf("第三行 - j 的值为 %d\n", j)
+
+	j = h << i /* 240 = 1111 0000 */
+	fmt.Printf("第四行 - j 的值为 %d\n", j)
+
+	j = h >> i /* 15 = 0000 1111 */
+	fmt.Printf("第五行 - j 的值为 %d\n", j)
 }
