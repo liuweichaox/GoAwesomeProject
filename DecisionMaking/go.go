@@ -78,6 +78,7 @@ func main() {
 		fmt.Println("6、默认 case")
 	}
 
+	//select
 	var c1, c2, c3 chan int
 	var i1, i2 int
 	select {
