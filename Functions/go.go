@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
@@ -21,13 +20,19 @@ func main() {
 	x, y := swap("Google", "Runoob")
 	fmt.Println(x, y)
 
-	/* 声明函数变量 */
-	getSquareRoot := func(x float64) float64 {
-		return math.Sqrt(x)
+	var getSequence = func() func() int {
+		i := 0
+		return func() int {
+			i += 1
+			return i
+		}
 	}
-
-	/* 使用函数 */
-	fmt.Println(getSquareRoot(9))
+	/* nextNumber 为一个函数，函数 i 为 0 */
+	nextNumber := getSequence()
+	/* 调用 nextNumber 函数，i 变量自增 1 并返回 */
+	fmt.Println(nextNumber())
+	fmt.Println(nextNumber())
+	fmt.Println(nextNumber())
 
 	testCallBack(1, callBack)
 	testCallBack(2, func(x int) int {
@@ -95,4 +100,12 @@ func (user UserInfo) getUserName() string {
 
 func getLastName(user UserInfo) string {
 	return user.lastName
+}
+
+func getSequence() func() int {
+	i := 0
+	return func() int {
+		i += 1
+		return i
+	}
 }
