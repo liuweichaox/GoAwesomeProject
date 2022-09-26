@@ -39,6 +39,8 @@ func main() {
 	user.lastName = "Liu"
 	user.firstName = "WeiChao"
 	fmt.Println("name = ", user.getUserName())
+
+	fmt.Println(getLastName(user))
 }
 
 /* 函数返回两个数的最大值 */
@@ -89,4 +91,8 @@ type UserInfo struct {
 
 func (user UserInfo) getUserName() string {
 	return user.lastName + " " + user.firstName
+}
+
+func getLastName(user UserInfo) string {
+	return user.lastName
 }
