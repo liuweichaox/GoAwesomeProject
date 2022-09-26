@@ -35,9 +35,10 @@ func main() {
 		return x
 	})
 
-	var c1 Circle
-	c1.radius = 10.00
-	fmt.Println("圆的面积 = ", c1.getArea())
+	var user UserInfo
+	user.lastName = "Liu"
+	user.firstName = "WeiChao"
+	fmt.Println("name = ", user.getUserName())
 }
 
 /* 函数返回两个数的最大值 */
@@ -76,12 +77,16 @@ func callBack(x int) int {
 }
 
 /* 定义结构体 */
-type Circle struct {
-	radius float64
+type UserInfo struct {
+	id        int32
+	lastName  string
+	firstName string
+	age       string
+	email     string
+	address   string
+	password  string
 }
 
-// 该 method 属于 Circle 类型对象中的方法
-func (c Circle) getArea() float64 {
-	//c.radius 即为 Circle 类型对象中的属性
-	return 3.14 * c.radius * c.radius
+func (user UserInfo) getUserName() string {
+	return user.lastName + " " + user.firstName
 }
