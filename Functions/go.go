@@ -106,6 +106,7 @@ func (user UserInfo) getUserName() string {
 func getLastName(user UserInfo) string {
 	return user.lastName
 }
+
 func notRefChange(user UserInfo, newFirstName string) {
 	user.firstName = newFirstName
 }
