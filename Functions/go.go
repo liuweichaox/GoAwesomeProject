@@ -43,14 +43,17 @@ func main() {
 	var user UserInfo
 	user.lastName = "Liu"
 	user.firstName = "WeiChao"
+
 	fmt.Println("name = ", user.getUserName())
 	fmt.Println(getLastName(user))
 
 	//用类型要想改变值需要传指针
 	notRefChange(user, "not ref da da")
 	fmt.Println("firstName " + user.firstName)
+
 	refChange(&user, "ref da da")
 	fmt.Println("firstName " + user.firstName)
+
 }
 
 /* 函数返回两个数的最大值 */
@@ -100,7 +103,7 @@ type UserInfo struct {
 }
 
 func (user UserInfo) getUserName() string {
-	return user.lastName + " " + user.firstName
+	return user.firstName + " " + user.lastName
 }
 
 func getLastName(user UserInfo) string {
