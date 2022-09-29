@@ -38,7 +38,7 @@ func main() {
 	var l func(string) int
 	fmt.Println("l", l)
 
-	var m error // error 是接口
+	var m error // error 是接口]
 	fmt.Println("m", m)
 
 	//第二种，根据值自行判定变量类型。
