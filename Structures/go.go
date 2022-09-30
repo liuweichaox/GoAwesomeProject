@@ -7,9 +7,9 @@ func main() {
 	person := Person{"liu", "wei chao 1", 1}
 	fmt.Printf("%v\n", person)
 	// 也可以使用 key => value 格式
-	person2 := &Person{first_name: "liu", last_name: "wei chao 2", id: 2}
+	person2 := Person{first_name: "liu", last_name: "wei chao 2", id: 2}
 	fmt.Printf("%+v\n", person2)
-	person3 := &Person{first_name: "liu"}
+	person3 := Person{first_name: "liu"}
 	// 略的字段为 0 或 空
 	fmt.Printf("%#v\n", person3)
 
