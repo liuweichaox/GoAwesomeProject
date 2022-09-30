@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var i, j, k int
@@ -42,4 +44,9 @@ func main() {
 	// Step 4: 访问第一个元素
 	fmt.Println("第一个元素为：")
 	fmt.Println(values[0][0])
+
+	var userIds = []int{1, 2, 3}
+	for i = 0; i < 3; i++ {
+		fmt.Printf("userIds[%d]=[%d]\n", i, userIds[i])
+	}
 }
