@@ -16,9 +16,11 @@ func main() {
 	var person4 Person
 	person4.first_name = "lee"
 	person4.last_name = "wei"
+
 	fmt.Println("last_name 更改前：" + person4.last_name)
 	change(&person4)
 	fmt.Println("last_name 更改后：" + person4.last_name)
+
 	fmt.Println(person4.getFullName())
 }
 
