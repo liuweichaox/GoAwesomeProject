@@ -24,4 +24,14 @@ func main() {
 		Male    = 2
 	)
 	fmt.Println(Unknown, Female, Male)
+
+	const trueConst = true
+	type myBool bool
+	var defaultBool = trueConst       // 允许
+	var customBool myBool = trueConst // 允许
+
+	//  defaultBool = customBool // 不允许
+
+	fmt.Println(defaultBool)
+	fmt.Println(customBool)
 }
