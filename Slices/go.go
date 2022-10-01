@@ -28,7 +28,12 @@ func main() {
 	/* 打印子切片从索引 2(包含) 到索引 5(不包含) */
 	number3 := numbers[2:5]
 	printSlice(number3)
+
+	/* 复制全部 */
+	number4 := numbers[:]
+	printSlice(number4)
 }
 func printSlice(x []int) {
+	/* len 获取数组长度， cap 获取数组最长可以达到的长度 */
 	fmt.Printf("len=%d cap=%d slice=%v\n", len(x), cap(x), x)
 }
