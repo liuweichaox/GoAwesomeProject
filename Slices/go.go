@@ -32,6 +32,13 @@ func main() {
 	/* 复制全部 */
 	number4 := numbers[:]
 	printSlice(number4)
+
+	/* 拷贝 numbers 的内容到 numbers5 */
+	var numbers5 []int = make([]int, len(numbers))
+
+	/* 拷贝 numbers 的内容到 numbers1 */
+	copy(numbers5, numbers)
+	printSlice(numbers5)
 }
 func printSlice(x []int) {
 	/* len 获取数组长度， cap 获取数组最长可以达到的长度 */
