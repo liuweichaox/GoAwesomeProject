@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var i int = 15
+	var i int = 3
 	fmt.Printf("%d 的阶乘是 %d\n", i, foo(uint64(i)))
 }
 func foo(i uint64) (result uint64) {
