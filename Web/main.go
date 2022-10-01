@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"os"
 )
 
 var db = make(map[string]string)
@@ -12,6 +12,14 @@ func setupRouter() *gin.Engine {
 	// Disable Console Color
 	// gin.DisableConsoleColor()
 	r := gin.Default()
+	str, _ := os.Getwd()
+	r.LoadHTMLGlob(str + "/Web/templates/*")
+	//router.LoadHTMLFiles("templates/template1.html", "templates/template2.html")
+	r.GET("/index", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"title": "Main website",
+		})
+	})
 
 	// Ping test
 	r.GET("/ping", func(c *gin.Context) {
