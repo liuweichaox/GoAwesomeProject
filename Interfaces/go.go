@@ -15,11 +15,11 @@ func (nokiaPhone NokiaPhone) call() {
 	fmt.Println("I am Nokia, I can call you!")
 }
 
-type IPhone struct {
+type ApplePhone struct {
 }
 
-func (iPhone IPhone) call() {
-	fmt.Println("I am iPhone, I can call you!")
+func (applePhone ApplePhone) call() {
+	fmt.Println("I am Apple, I can call you!")
 }
 
 func main() {
@@ -28,7 +28,7 @@ func main() {
 	phone = new(NokiaPhone)
 	phone.call()
 
-	phone = new(IPhone)
+	phone = new(ApplePhone)
 	phone.call()
 
 }
