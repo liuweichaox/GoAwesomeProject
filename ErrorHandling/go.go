@@ -10,7 +10,7 @@ type DivideError struct {
 	divider int
 }
 
-// 实现 `error` 接口
+// go语言的错误，纵观全局就是error接口，只要实现了Error()string方法的任何类型，都属于错误。
 func (de *DivideError) Error() string {
 	strFormat := `
     Cannot proceed, the divider is zero.
