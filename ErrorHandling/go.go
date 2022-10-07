@@ -35,6 +35,24 @@ func Divide(varDividee int, varDivider int) (result int, errorMsg string) {
 
 }
 
+func copyfile(src, dst) error {
+ fsrc, err := os.Open(src)
+ if err != nil {
+  return err
+ }
+ defer fsrc.Close()
+
+ fdst, err := os.Open(src)
+ if err != nil {
+  return err
+ }
+ defer fdst.Close()
+
+ err := io.Copy(fdst, fsrc)
+
+ return err
+}
+
 func main() {
 
 	// 正常情况
