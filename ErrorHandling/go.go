@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 // 定义一个 DivideError 结构
@@ -45,4 +46,11 @@ func main() {
 	if _, errorMsg := Divide(100, 0); errorMsg != "" {
 		fmt.Println("errorMsg is: ", errorMsg)
 	}
+
+	f, err := os.Open("/test.txt")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(f.Name(), "opened successfully")
 }
