@@ -96,9 +96,7 @@ func main() {
 	for {
 		select {
 		case x := <-ch:
-			fmt.Println("Receive x", x)
-		case y := <-ch:
-			fmt.Println("Receive y", y)
+			fmt.Println("Receive ", x)
 		case _ = <-stopCh:
 			goto end
 		}
