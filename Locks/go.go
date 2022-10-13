@@ -1,9 +1,9 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/go-redis/redis/v9"
-	"golang.org/x/net/context"
 	"sync"
 	"time"
 )
@@ -53,58 +53,37 @@ func lock() {
 	println(counter)
 }
 
-func redisLock() {
-	var wg sync.WaitGroup
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			incr()
-		}()
-	}
-	wg.Wait()
-}
-
 var ctx = context.Background()
 
-func incr() {
-	client := redis.NewClient(&redis.Options{
+func redisLock() {
+	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "123456", // no password set
 		DB:       0,        // use default DB
 	})
 
-	var lockKey = "counter_lock"
-	var counterKey = "counter"
-
-	// lock
-	resp := client.SetNX(ctx, lockKey, 1, time.Second*5)
-	lockSuccess, err := resp.Result()
-
-	if err != nil || !lockSuccess {
-		fmt.Println(err, "lock result: ", lockSuccess)
-		return
+	err := rdb.Set(ctx, "key", "value", 0).Err()
+	if err != nil {
+		panic(err)
 	}
 
-	// counter ++
-	getResp := client.Get(ctx, counterKey)
-	cntValue, err := getResp.Int64()
-	if err == nil {
-		cntValue++
-		resp := client.Set(ctx, counterKey, cntValue, 0)
-		_, err := resp.Result()
-		if err != nil {
-			// log err
-			println("set value error!")
-		}
+	val, err := rdb.Get(ctx, "key").Result()
+	if err != nil {
+		panic(err)
 	}
-	println("current counter is ", cntValue)
+	fmt.Println("key", val)
 
-	delResp := client.Del(ctx, lockKey)
-	unlockSuccess, err := delResp.Result()
-	if err == nil && unlockSuccess > 0 {
-		println("unlock success!")
+	val2, err := rdb.Get(ctx, "key2").Result()
+	if err == redis.Nil {
+		fmt.Println("key2 does not exist")
+	} else if err != nil {
+		panic(err)
 	} else {
-		println("unlock failed", err)
+		fmt.Println("key2", val2)
 	}
+	// Output: key value
+	// key2 does not exist
+	// SET key value EX 10 NX
+	set, err := rdb.SetNX(ctx, "lockKey", "value", 10*time.Second).Result()
+	fmt.Println(set, err)
 }
