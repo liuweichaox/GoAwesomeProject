@@ -41,34 +41,16 @@ func main() {
 	fmt.Println("mysql connection success!")
 
 	insertRowDemo()
-	fmt.Println("insertRowDemo success!")
-
 	updateRowDemo()
-	fmt.Println("updateRowDemo success!")
-
 	deleteRowDemo()
-	fmt.Println("deleteRowDemo success!")
-
 	queryRowDemo()
-	fmt.Println("queryRowDemo success!")
-
 	queryMultiRowDemo()
-	fmt.Println("queryMultiRowDemo success!")
-
 	prepareInsertDemo()
-	fmt.Println("prepareInsertDemo success!")
-
 	prepareQueryDemo()
-	fmt.Println("prepareQueryDemo success!")
-
 	sqlInjectDemo("xxx' or 1=1#")
 	sqlInjectDemo("xxx' union select * from user #")
 	sqlInjectDemo("xxx' and (select count(*) from user) <10 #")
-	fmt.Println("sqlInjectDemo success!")
-
 	transactionDemo()
-	fmt.Println("transactionDemo success!")
-
 }
 
 // 插入数据
