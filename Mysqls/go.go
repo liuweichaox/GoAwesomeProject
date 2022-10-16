@@ -6,6 +6,16 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+/*
+CREATE TABLE `user` (
+
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(20) DEFAULT '',
+	`age` INT(11) DEFAULT '0',
+	PRIMARY KEY(`id`)
+
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+*/
 type user struct {
 	id   int
 	age  int
@@ -32,6 +42,7 @@ func initDB() (err error) {
 	}
 	return nil
 }
+
 func main() {
 	err := initDB() // 调用输出化数据库的函数
 	if err != nil {
