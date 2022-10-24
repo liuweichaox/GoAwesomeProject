@@ -89,9 +89,9 @@ func swap(x string, y string) (string, string) {
 }
 
 // 声明一个函数类型
-type cb func(int) int
+type delegate func(int) int
 
-func testCallBack(x int, f cb) {
+func testCallBack(x int, f delegate) {
 	f(x)
 }
 
