@@ -54,6 +54,15 @@ func main() {
 	refChange(&user, "ref da da")
 	fmt.Println("firstName " + user.firstName)
 
+	// 变参函数使用常规的调用方式，除了参数比较特殊。
+	sum(1, 2)
+	sum(1, 2, 3)
+
+	// 如果你的 slice 已经有了多个值，想把它们作为变参
+	// 使用，你要这样调用 `func(slice...)`。
+	nums := []int{1, 2, 3, 4}
+	sum(nums...)
+
 }
 
 /* 函数返回两个数的最大值 */
@@ -123,4 +132,13 @@ func getSequence() func() int {
 		i += 1
 		return i
 	}
+}
+
+func sum(nums ...int) {
+	fmt.Print(nums, " ")
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	fmt.Println(total)
 }
