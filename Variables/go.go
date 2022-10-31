@@ -23,21 +23,27 @@ func main() {
 	var f bool
 	fmt.Println("f", f)
 
+	// 指针类型
 	var h *int
 	fmt.Println("h", h)
 
+	// 数组类型
 	var i []int
 	fmt.Println("i", i)
 
+	// map
 	var g map[string]int
 	fmt.Println("g", g)
 
+	// 通道类型
 	var k chan int
 	fmt.Println("k", k)
 
+	// 委托
 	var l func(string) int
 	fmt.Println("l", l)
 
+	// 错误
 	var m error // error 是接口]
 	fmt.Println("m", m)
 
