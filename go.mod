@@ -3,6 +3,7 @@ module GoAwesomeProject
 go 1.19
 
 require (
+	github.com/360EntSecGroup-Skylar/excelize v1.4.1 // indirect
 	github.com/Spongecaptain/redisLock v0.0.0-20210628032846-c6413cca220a // indirect
 	github.com/bsm/redislock v0.4.3 // indirect
 	github.com/bwmarrin/snowflake v0.3.0 // indirect
@@ -23,6 +24,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.15 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
+	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/zeromicro/go-zero v1.4.1 // indirect
