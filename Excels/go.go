@@ -1,8 +1,9 @@
 package main
 
+//go env -w GOPROXY=https://goproxy.cn
 import (
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
+	"github.com/xuri/excelize/v2"
 )
 
 func main() {
