@@ -32,6 +32,16 @@ func main() {
 	f.SetCellValue(sheet1, "B1", "手机号")
 	f.SetCellValue(sheet1, "C1", "年龄")
 	f.SetCellValue(sheet1, "D1", "邮箱")
+
+	f.SetCellValue(sheet1, "A2", "刘大大")
+	f.SetCellValue(sheet1, "B2", "18088992233")
+	f.SetCellValue(sheet1, "C2", 27)
+	f.SetCellValue(sheet1, "D2", "55555@qq.com")
+
+	f.SetCellValue(sheet1, "A3", "刘伟超")
+	f.SetCellValue(sheet1, "B3", "1351111222")
+	f.SetCellValue(sheet1, "C3", 27)
+	f.SetCellValue(sheet1, "D3", "12345@qq.com")
 	err = f.SaveAs("Book.xlsx")
 	if err != nil {
 		fmt.Println(err)
