@@ -28,6 +28,7 @@ func main() {
 	var sheet1 = "Sheet1"
 	index := f.NewSheet(sheet1)
 	f.SetActiveSheet(index)
+	style, err := f.NewStyle(`{"Alignment":{"Horizontal":"center"}}`)
 	f.SetCellValue(sheet1, "A1", "姓名")
 	f.SetCellValue(sheet1, "B1", "手机号")
 	f.SetCellValue(sheet1, "C1", "年龄")
@@ -42,6 +43,8 @@ func main() {
 	f.SetCellValue(sheet1, "B3", "1351111222")
 	f.SetCellValue(sheet1, "C3", 27)
 	f.SetCellValue(sheet1, "D3", "12345@qq.com")
+
+	f.SetCellStyle(sheet1, "A1", "C3", style)
 	err = f.SaveAs("Book.xlsx")
 	if err != nil {
 		fmt.Println(err)
