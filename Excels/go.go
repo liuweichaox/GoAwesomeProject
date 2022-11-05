@@ -1,55 +1,52 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
-	"github.com/360EntSecGroup-Skylar/excelize"
-	_ "github.com/go-sql-driver/mysql"
+
+	"github.com/xuri/excelize/v2"
 )
 
 func main() {
-	// 定义一个全局对象db
-	var db *sql.DB
-	// DSN:Data Source Name
-	dsn := "root:123456@tcp(127.0.0.1:3306)/dev?charset=utf8mb4&parseTime=True"
-	// 不会校验账号密码是否正确
-	// 注意！！！这里不要使用:=，我们是给全局变量赋值，然后在main函数中使用全局变量db
-	db, err := sql.Open("mysql", dsn)
-	// 尝试与数据库建立连接（校验dsn是否正确）
-	err = db.Ping()
-	defer func() {
-		db.Close()
-	}()
-	if err != nil {
+	categories := map[string]string{
+		"A2": "Small", "A3": "Normal", "A4": "Large",
+		"B1": "Apple", "C1": "Orange", "D1": "Pear"}
+	values := map[string]int{
+		"B2": 2, "C2": 3, "D2": 3, "B3": 5, "C3": 2, "D3": 4, "B4": 6, "C4": 7, "D4": 8}
+	f := excelize.NewFile()
+	for k, v := range categories {
+		f.SetCellValue("Sheet1", k, v)
+	}
+	for k, v := range values {
+		f.SetCellValue("Sheet1", k, v)
+	}
+	if err := f.AddChart("Sheet1", "E1", `{
+        "type": "col3DClustered",
+        "series": [
+        {
+            "name": "Sheet1!$A$2",
+            "categories": "Sheet1!$B$1:$D$1",
+            "values": "Sheet1!$B$2:$D$2"
+        },
+        {
+            "name": "Sheet1!$A$3",
+            "categories": "Sheet1!$B$1:$D$1",
+            "values": "Sheet1!$B$3:$D$3"
+        },
+        {
+            "name": "Sheet1!$A$4",
+            "categories": "Sheet1!$B$1:$D$1",
+            "values": "Sheet1!$B$4:$D$4"
+        }],
+        "title":
+        {
+            "name": "Fruit 3D Clustered Column Chart"
+        }
+    }`); err != nil {
+		fmt.Println(err)
+		return
+	}
+	// Save spreadsheet by the given path.
+	if err := f.SaveAs("Book1.xlsx"); err != nil {
 		fmt.Println(err)
 	}
-
-	var f = excelize.NewFile()
-	var sheet1 = "Sheet1"
-	index := f.NewSheet(sheet1)
-	f.SetActiveSheet(index)
-	style, err := f.NewStyle(`{"Alignment":{"Horizontal":"center"}}`)
-	f.SetCellValue(sheet1, "A1", "姓名")
-	f.SetCellValue(sheet1, "B1", "手机号")
-	f.SetCellValue(sheet1, "C1", "年龄")
-	f.SetCellValue(sheet1, "D1", "邮箱")
-
-	f.SetCellValue(sheet1, "A2", "刘大大")
-	f.SetCellValue(sheet1, "B2", "18088992266")
-	f.SetCellValue(sheet1, "C2", 27)
-	f.SetCellValue(sheet1, "D2", "55555@qq.com")
-
-	f.SetCellValue(sheet1, "A3", "刘伟超")
-	f.SetCellValue(sheet1, "B3", "1351111222")
-	f.SetCellValue(sheet1, "C3", 27)
-	f.SetCellValue(sheet1, "D3", "12345@qq.com")
-
-	f.SetCellStyle(sheet1, "A1", "C3", style)
-	err = f.SaveAs("Book.xlsx")
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println("complete")
-
 }
