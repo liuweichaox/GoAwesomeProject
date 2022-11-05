@@ -35,7 +35,7 @@ func main() {
 	f.SetCellValue(sheet1, "D1", "邮箱")
 
 	f.SetCellValue(sheet1, "A2", "刘大大")
-	f.SetCellValue(sheet1, "B2", "18088992233")
+	f.SetCellValue(sheet1, "B2", "18088992266")
 	f.SetCellValue(sheet1, "C2", 27)
 	f.SetCellValue(sheet1, "D2", "55555@qq.com")
 
