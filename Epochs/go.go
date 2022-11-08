@@ -1,4 +1,4 @@
-// 一般程序会有获取 [Unix 时间](http://zh.wikipedia.org/wiki/UNIX%E6%97%B6%E9%97%B4)
+// 一般程序会有获取 [Unix 时间]
 // 的秒数，毫秒数，或者微秒数的需求。来看看如何用 Go 来实现。
 
 package main
